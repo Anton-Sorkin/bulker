@@ -1,23 +1,54 @@
-// cteate boilder template for server
-
 const express = require("express");
-
 const app = express();
+const dotenv = require("dotenv");
+const MongoClient = require("mongodb").MongoClient;
+const cors = require("cors");
 
-//express.json is a middleware that allows us to use the req.body object
-app.use(
-  cors({
-    origin: ["*"],
-    methods: ["*"],
-  })
+dotenv.config(
+  {
+    path: "../.env",
+  },
+  (error) => {
+    if (error) {
+      console.error(error);
+      return;
+    }
+    console.log("Environment variables loaded");
+  }
 );
 
-//get route from startRoute.js
-app.use("/", require("./routes/startRoute"));
+app.use(express.json());
 
-const PORT = process.env.PORT || 5000;
+app.use(cors());
 
-//local server
-app.listen(PORT, () => {
-  console.log("online at http://localhost:5000");
+const getDataFromDatabase = async (client) => {
+  const db = client.db("Bulker");
+  const collection = db.collection("Food");
+
+  try {
+    const data = await collection.find({}).toArray();
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
+
+app.get("/api", async (req, res) => {
+  const client = await MongoClient.connect(process.env.MONGODB_CONNECTION, {
+    useNewUrlParser: true,
+  });
+
+  const data = await getDataFromDatabase(client);
+
+  res.json(data);
+});
+
+const port = process.env.PORT || 8000;
+
+app.listen(port, () => {
+  console.log(`Server is running on port: ${port}`);
 });
