@@ -30,6 +30,7 @@ function App() {
             font-family: sans-serif;
             margin: 0;
             padding: 0;
+            background: #f5f5f5;
           }
         `}
       />
