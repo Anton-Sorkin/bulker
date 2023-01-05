@@ -3,20 +3,19 @@ import styled from "@emotion/styled";
 export const NabvarContainer = styled.div`
   display: flex;
   flex-direction: row;
-  height: 50px;
+  height: 75px;
   width: 95%;
   margin-top: 10px;
   border-radius: 8px 0px 0px 8px;
   background: #ffffff;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   & > h1 {
     font-size: 24px;
-    width: 20%;
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    margin-left: 25px;
   }
   & > div {
     width: 20%;
@@ -24,6 +23,7 @@ export const NabvarContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin-right: 25px;
     & > a {
       text-decoration: none;
       color: #000000;
