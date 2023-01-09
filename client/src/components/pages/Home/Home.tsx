@@ -2,6 +2,7 @@ import Carusel from "../../Carusel/Carusel";
 import Filter from "../../Filter/Filter";
 import Footer from "../../Footer/Footer";
 import Navbar from "../../Navbar/Navbar";
+import { Link } from "react-router-dom";
 
 import { useState } from "react";
 
@@ -46,7 +47,9 @@ const Home = () => {
         <SwiperLinkContainer>
           <h1>Find Your Favorites</h1>
           <p>A new take on finding new Food. Swipe it!</p>
-          <button>Swipe them now!</button>
+          <Link to={`/swiper`}>
+            <button>Swipe them now!</button>
+          </Link>
         </SwiperLinkContainer>
       </CompContainer>
 

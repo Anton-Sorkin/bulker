@@ -40,9 +40,7 @@ export const CaruselContainer = styled.div`
 export const Card = styled.div`
   display: flex;
   flex-direction: column;
-
   width: 145px;
-
   border-radius: 8px 8px 8px 8px;
 
   & > div {

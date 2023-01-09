@@ -81,20 +81,22 @@ export const SwiperLinkContainer = styled.div`
     font-weight: 300;
     color: #232323;
   }
-  & > button {
-    width: 167px;
-    height: 40px;
-    background: linear-gradient(90deg, #ff8585 0%, #ff9b85 100%);
-    box-shadow: 0px 0px 2px rgba(147, 147, 147, 0.25),
-      inset 0px 0px 7px rgba(147, 147, 147, 0.1);
-    border-radius: 12px;
-    border: none;
-    margin-left: 25px;
-    color: #ffffff;
-    margin-top: 5px;
-    @media (max-width: 280px) {
-      width: 100px;
-      height: 30px;
+  & > a {
+    & > button {
+      width: 167px;
+      height: 40px;
+      background: linear-gradient(90deg, #ff8585 0%, #ff9b85 100%);
+      box-shadow: 0px 0px 2px rgba(147, 147, 147, 0.25),
+        inset 0px 0px 7px rgba(147, 147, 147, 0.1);
+      border-radius: 12px;
+      border: none;
+      margin-left: 25px;
+      color: #ffffff;
+      margin-top: 5px;
+      @media (max-width: 280px) {
+        width: 100px;
+        height: 30px;
+      }
     }
   }
 `;

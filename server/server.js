@@ -43,7 +43,6 @@ app.get("/api", async (req, res) => {
   });
 
   const data = await getDataFromDatabase(client);
-
   res.json(data);
 });
 

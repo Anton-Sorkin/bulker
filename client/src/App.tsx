@@ -7,6 +7,8 @@ import { createContext } from "react";
 
 import Home from "./components/pages/Home/Home";
 import Product from "./components/pages/Product/Product";
+import Swiper from "./components/pages/Swiper/Swiper";
+import GroceryList from "./components/pages/GroceryList/GroceryList";
 
 function App() {
   const [backendData, setBackendData] = useState<IFood[]>([]);
@@ -51,6 +53,23 @@ function App() {
             element={
               <BackendDataContext.Provider value={backendData}>
                 <Product />
+              </BackendDataContext.Provider>
+            }
+          ></Route>
+
+          <Route
+            path="/swiper"
+            element={
+              <BackendDataContext.Provider value={backendData}>
+                <Swiper />
+              </BackendDataContext.Provider>
+            }
+          ></Route>
+          <Route
+            path="/myrecipes"
+            element={
+              <BackendDataContext.Provider value={backendData}>
+                <GroceryList />
               </BackendDataContext.Provider>
             }
           ></Route>

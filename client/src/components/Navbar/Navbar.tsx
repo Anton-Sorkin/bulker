@@ -6,7 +6,7 @@ const Navbar = () => {
       <h1>BULKER</h1>
       <div>
         <a href="/">#</a>
-        <a href="/">$</a>
+        <a href="/myrecipes">$</a>
       </div>
     </NabvarContainer>
   );
