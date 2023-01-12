@@ -10,12 +10,22 @@ export const NabvarContainer = styled.div`
   background: #ffffff;
   align-items: center;
   justify-content: space-between;
-  & > h1 {
-    font-size: 24px;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    margin-left: 25px;
+  @media (min-width: 768px) {
+    height: 100px;
+  }
+  & > a {
+    text-decoration: none;
+    color: #000000;
+    & > h1 {
+      font-size: 24px;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      margin-left: 25px;
+      @media (min-width: 768px) {
+        font-size: 30px;
+      }
+    }
   }
   & > div {
     width: 20%;

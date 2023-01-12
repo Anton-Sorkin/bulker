@@ -2,21 +2,15 @@ import { useContext, useEffect, useState } from "react";
 import { BackendDataContext } from "../../../App";
 import { IFood } from "../../../models/IFood";
 import Footer from "../../Footer/Footer";
-import {
-  CompContainer,
-  InfoWrapper,
-  ModalContainer,
-  ProductContainer,
-} from "../Product/Product.styles";
+import SwiperInfo from "../../Info/SwiperInfo";
+import SwiperModal from "../../ProductModal/SwiperModal";
+import { CompContainer, ProductContainer } from "../Product/Product.styles";
 import { NextSwipeWrapper } from "./Swiper.styles";
 
 const Swiper = () => {
   const backendData = useContext(BackendDataContext) as IFood[];
-
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   const [amountOfProducts, setAmountOfProducts] = useState(0);
-
   const [productIndex, setProductIndex] = useState(0);
 
   const handleNextProduct = () => {
@@ -56,7 +50,7 @@ const Swiper = () => {
     <ProductContainer>
       <a href="/">$</a>
       <div>
-        <a href="/">
+        <a href="/myrecipes">
           %
           <div>
             <p>{amountOfProducts}</p>
@@ -66,16 +60,17 @@ const Swiper = () => {
 
       <img src={backendData[productIndex].img} alt={"hello"} />
       <CompContainer>
-        <InfoWrapper>
-          <h1>{backendData[productIndex].title}</h1>
-          <p>{backendData[productIndex].description}</p>
-          <button onClick={toggleModal}>See Recipe</button>
-        </InfoWrapper>
+        <SwiperInfo
+          product={backendData[productIndex]}
+          toggleModal={toggleModal}
+        />
       </CompContainer>
 
       <CompContainer>
         <NextSwipeWrapper>
-          <button onClick={handleNextProduct}>Next product</button>
+          <div>
+            <button onClick={handleNextProduct}>Next product</button>
+          </div>
           <button onClick={handleAddAndNextProduct}>
             Add it and next product
           </button>
@@ -85,18 +80,10 @@ const Swiper = () => {
         <Footer />
       </CompContainer>
       {isModalOpen && (
-        <ModalContainer>
-          <div>
-            <h1>{backendData[productIndex].title}</h1>
-            <h2>Ingredients</h2>
-            <li>
-              {backendData[productIndex].ingredients.map((ingredient) => (
-                <p>{ingredient}</p>
-              ))}
-            </li>
-            <button onClick={toggleModal}>Close</button>
-          </div>
-        </ModalContainer>
+        <SwiperModal
+          toggleModal={toggleModal}
+          product={backendData[productIndex]}
+        />
       )}
     </ProductContainer>
   );

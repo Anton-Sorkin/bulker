@@ -8,6 +8,9 @@ export const CaruselContainer = styled.div`
   margin-top: 10px;
   border-radius: 8px 0px 0px 8px;
   background: #ffffff;
+  @media (min-width: 768px) {
+    height: 360px;
+  }
 
   & > h1 {
     font-size: 26px;
@@ -15,6 +18,9 @@ export const CaruselContainer = styled.div`
     padding-top: 20px;
     font-weight: 700;
     color: #232323;
+    @media (min-width: 768px) {
+      font-size: 30px;
+    }
   }
 
   & > div {
@@ -22,13 +28,16 @@ export const CaruselContainer = styled.div`
     margin-left: 25px;
     display: flex;
     flex-direction: row;
-    gap: 30px;
+    gap: 20px;
     overflow-x: scroll;
     overflow-y: hidden;
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
     &::-webkit-scrollbar {
       display: none;
+    }
+    @media (min-width: 768px) {
+      gap: 25px;
     }
 
     & > a {
@@ -37,23 +46,23 @@ export const CaruselContainer = styled.div`
   }
 `;
 
-export const Card = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 145px;
-  border-radius: 8px 8px 8px 8px;
+// export const Card = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   width: 145px;
+//   border-radius: 8px 8px 8px 8px;
 
-  & > div {
-    display: flex;
-    height: 165px;
-    width: 145px;
-    border-radius: 8px 8px 8px 8px;
-    background-color: #eeeeee;
-  }
+//   & > div {
+//     display: flex;
+//     height: 165px;
+//     width: 145px;
+//     border-radius: 8px 8px 8px 8px;
+//     background-color: #eeeeee;
+//   }
 
-  & > h1 {
-    font-size: 16px;
-    font-weight: 700;
-    color: #232323;
-  }
-`;
+//   & > h1 {
+//     font-size: 16px;
+//     font-weight: 700;
+//     color: #232323;
+//   }
+// `;

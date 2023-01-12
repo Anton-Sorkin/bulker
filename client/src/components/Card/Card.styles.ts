@@ -9,6 +9,10 @@ export const CardContainer = styled.div`
   border-radius: 8px 8px 8px 8px;
   display: flex;
   flex-direction: column;
+  @media (min-width: 768px) {
+    height: 220px;
+    width: 165px;
+  }
 
   & > img {
     display: flex;
@@ -16,6 +20,10 @@ export const CardContainer = styled.div`
     width: 145px;
     border-radius: 8px 8px 8px 8px;
     background-color: #eeeeee;
+    @media (min-width: 768px) {
+      height: 220px;
+      width: 165px;
+    }
   }
 
   & > h1 {
@@ -24,5 +32,8 @@ export const CardContainer = styled.div`
     color: #232323;
     text-decoration: none;
     height: 30px;
+    @media (min-width: 768px) {
+      font-size: 14px;
+    }
   }
 `;

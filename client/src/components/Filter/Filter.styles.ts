@@ -14,6 +14,9 @@ export const FilterContainer = styled.div`
   &::-webkit-scrollbar {
     display: none;
   }
+  @media (min-width: 768px) {
+    height: 140px;
+  }
 
   & > h1 {
     font-size: 24px;
@@ -25,6 +28,9 @@ export const FilterContainer = styled.div`
     bottom: 12px;
     font-weight: 700;
     color: #232323;
+    @media (min-width: 768px) {
+      font-size: 30px;
+    }
   }
   & > div {
     height: 100%;
@@ -35,6 +41,9 @@ export const FilterContainer = styled.div`
     top: 20px;
     gap: 10px;
     margin-left: 25px;
+    @media (min-width: 768px) {
+      gap: 20px;
+    }
 
     & > button {
       display: flex;
@@ -44,6 +53,10 @@ export const FilterContainer = styled.div`
       border: none;
       justify-content: center;
       align-items: center;
+      @media (min-width: 768px) {
+        height: 45px;
+        width: 110px;
+      }
 
       &.default-button:hover {
         background: linear-gradient(90deg, #ff8585 0%, #ff9b85 100%);

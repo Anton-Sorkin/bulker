@@ -21,7 +21,7 @@ export const HeroSectionImage = styled.div`
   background-position: center;
 
   @media (min-width: 768px) {
-    height: 550px;
+    height: 600px;
   }
 `;
 
@@ -33,6 +33,9 @@ export const HeroSectionTitle = styled.div`
   height: 150px;
   border-radius: 8px 0px 0px 8px;
   background: #ffffff;
+  @media (min-width: 768px) {
+    height: 180px;
+  }
   & > h1 {
     margin-top: 20px;
     padding-right: 25px;
@@ -43,6 +46,9 @@ export const HeroSectionTitle = styled.div`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    @media (min-width: 768px) {
+      font-size: 30px;
+    }
   }
   & > p {
     margin-top: 0px;
@@ -51,6 +57,9 @@ export const HeroSectionTitle = styled.div`
     font-size: 15px;
     font-weight: 300;
     color: #232323;
+    @media (min-width: 768px) {
+      font-size: 20px;
+    }
   }
 `;
 
@@ -62,6 +71,9 @@ export const SwiperLinkContainer = styled.div`
   height: 175px;
   border-radius: 8px 0px 0px 8px;
   background: #ffffff;
+  @media (min-width: 768px) {
+    height: 200px;
+  }
   & > h1 {
     margin-top: 20px;
     padding-right: 25px;
@@ -72,6 +84,9 @@ export const SwiperLinkContainer = styled.div`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    @media (min-width: 768px) {
+      font-size: 30px;
+    }
   }
   & > p {
     margin-top: 0px;
@@ -80,6 +95,9 @@ export const SwiperLinkContainer = styled.div`
     font-size: 15px;
     font-weight: 300;
     color: #232323;
+    @media (min-width: 768px) {
+      font-size: 20px;
+    }
   }
   & > a {
     & > button {
@@ -96,6 +114,11 @@ export const SwiperLinkContainer = styled.div`
       @media (max-width: 280px) {
         width: 100px;
         height: 30px;
+      }
+      @media (min-width: 768px) {
+        font-size: 16px;
+        width: 180px;
+        height: 50px;
       }
     }
   }

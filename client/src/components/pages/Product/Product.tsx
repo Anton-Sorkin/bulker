@@ -2,14 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { BackendDataContext } from "../../../App";
 import { IFood } from "../../../models/IFood";
+import AddToCart from "../../AddToCart/AddToCart";
+import ConfirmModal from "../../ConfirmModal/ConfirmModal";
 import Footer from "../../Footer/Footer";
-import {
-  AddToCardWrapper,
-  CompContainer,
-  InfoWrapper,
-  ModalContainer,
-  ProductContainer,
-} from "./Product.styles";
+import ProductInfo from "../../Info/ProductInfo";
+import ProductModal from "../../ProductModal/ProductModal";
+
+import { CompContainer, ProductContainer } from "./Product.styles";
 
 const Product: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -66,7 +65,11 @@ const Product: React.FC = () => {
     <ProductContainer>
       <a href="/">$</a>
       <div>
-        <a href="/">
+        <a
+          href="
+        /myrecipes
+        "
+        >
           %
           <div>
             <p>{amountOfProducts}</p>
@@ -76,65 +79,28 @@ const Product: React.FC = () => {
 
       <img src={product?.img} alt={product?.title} />
       <CompContainer>
-        <InfoWrapper>
-          <h1>{product?.title}</h1>
-          <p>{product?.description}</p>
-          <button onClick={toggleModal}>See Recipe</button>
-        </InfoWrapper>
+        <ProductInfo toggleModal={toggleModal} product={product!} />
       </CompContainer>
       <CompContainer>
-        <AddToCardWrapper>
-          {isSetToGroceryList === false && (
-            <button onClick={addToGroceryList}>Add to Grocery List</button>
-          )}
-
-          {isSetToGroceryList === true && (
-            <>
-              <button onClick={toggleConfirmedModal}>
-                Add Another Grocery List
-              </button>
-              <p>it has now been added to your cart!</p>
-            </>
-          )}
-          {/* create button that adds product to an array of products in local
-          storage */}
-        </AddToCardWrapper>
+        <AddToCart
+          isSetToGroceryList={isSetToGroceryList}
+          addToGroceryList={addToGroceryList}
+          toggleConfirmedModal={toggleConfirmedModal}
+        />
       </CompContainer>
       <CompContainer>
         <Footer />
       </CompContainer>
       {isModalOpen && (
-        <ModalContainer>
-          <div>
-            <h1>{product?.title}</h1>
-            <h2>Ingredients</h2>
-            <li>
-              {product?.ingredients.map((ingredient) => (
-                <p>{ingredient}</p>
-              ))}
-            </li>
-            <button onClick={toggleModal}>Close</button>
-          </div>
-        </ModalContainer>
+        <ProductModal toggleModal={toggleModal} product={product} />
       )}
 
       {isConfirmedModalOpen === true && (
-        <ModalContainer>
-          <div>
-            <h2>Are you sure you want to add</h2>
-            <h1>{product?.title}</h1>
-            <button
-              onClick={() => {
-                addToGroceryList();
-                toggleConfirmedModal();
-              }}
-            >
-              Yes
-            </button>
-
-            <button onClick={toggleConfirmedModal}>No</button>
-          </div>
-        </ModalContainer>
+        <ConfirmModal
+          product={product}
+          addToGroceryList={addToGroceryList}
+          toggleConfirmedModal={toggleConfirmedModal}
+        />
       )}
     </ProductContainer>
   );

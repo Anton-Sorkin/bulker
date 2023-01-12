@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+
 import { IFood } from "../../../models/IFood";
 import Footer from "../../Footer/Footer";
+import IngredientCard from "../../IngredientCard/IngredientCard";
 import Navbar from "../../Navbar/Navbar";
+import Options from "../../Options/Options";
 import {
   CompContainer,
+  EmptyWrapper,
   GroceryListContainer,
-  IngredientWrapper,
-  Options,
 } from "./GroceryList.styles";
 
 const GroceryList = () => {
@@ -29,49 +30,23 @@ const GroceryList = () => {
       </CompContainer>
 
       <CompContainer>
-        <Options>
-          <button
-            onClick={() => {
-              localStorage.removeItem("groceryList");
-              getGroceryList();
-            }}
-          >
-            Delete all
-          </button>
-
-          <Link to="/">
-            <button>Back to home</button>
-          </Link>
-        </Options>
+        <Options getGroceryList={getGroceryList} />
       </CompContainer>
+      {groceryList.length === 0 && (
+        <CompContainer>
+          <EmptyWrapper>
+            <h1>Your grocery list is empty</h1>
+          </EmptyWrapper>
+        </CompContainer>
+      )}
 
       {groceryList.map((product) => (
         <CompContainer key={product._id}>
-          <IngredientWrapper>
-            <div>
-              <h3>{product.title}</h3>
-
-              <ul>
-                {product.ingredients.map((ingredient, i) => (
-                  <li key={ingredient}>{ingredient}</li>
-                ))}
-              </ul>
-            </div>
-            <button
-              onClick={() => {
-                const filteredGroceryList = groceryList.filter(
-                  (groceryProduct) => groceryProduct._id !== product._id
-                );
-                localStorage.setItem(
-                  "groceryList",
-                  JSON.stringify(filteredGroceryList)
-                );
-                getGroceryList();
-              }}
-            >
-              Delete
-            </button>
-          </IngredientWrapper>
+          <IngredientCard
+            product={product}
+            getGroceryList={getGroceryList}
+            groceryList={groceryList}
+          />
         </CompContainer>
       ))}
       <CompContainer>
