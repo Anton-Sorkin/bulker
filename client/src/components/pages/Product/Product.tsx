@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { BackendDataContext } from "../../../App";
 import { IFood } from "../../../models/IFood";
@@ -7,8 +7,11 @@ import ConfirmModal from "../../ConfirmModal/ConfirmModal";
 import Footer from "../../Footer/Footer";
 import ProductInfo from "../../Info/ProductInfo";
 import ProductModal from "../../ProductModal/ProductModal";
-
+import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
+import { Icon } from "@mui/material";
+import HomeIcon from "@mui/icons-material/Home";
 import { CompContainer, ProductContainer } from "./Product.styles";
+import SimilarProducts from "../../SimilarProducts/SimilarProducts";
 
 const Product: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -31,20 +34,32 @@ const Product: React.FC = () => {
     setIsSetToGroceryList(true);
   };
 
-  useEffect(() => {
+  const fetchGroceryListSingle = (
+    id: string
+  ): { groceryList: IFood[]; foundProduct: IFood | undefined } => {
     const groceryList = JSON.parse(localStorage.getItem("groceryList") || "[]");
     const foundProduct = groceryList.find(
       (product: IFood) => product._id === id
     );
-    if (foundProduct) {
-      setIsSetToGroceryList(true);
-    } else {
-      setIsSetToGroceryList(false);
-    }
-  }, [id]);
+    return { groceryList, foundProduct };
+  };
+
+  useCallback(
+    (id: string) => {
+      const { foundProduct } = fetchGroceryListSingle(id);
+
+      if (foundProduct) {
+        setIsSetToGroceryList(true);
+      } else {
+        setIsSetToGroceryList(false);
+      }
+    },
+    [id]
+  );
 
   useEffect(() => {
     const groceryList = JSON.parse(localStorage.getItem("groceryList") || "[]");
+
     setAmountOfProducts(groceryList.length);
   }, [isSetToGroceryList, isConfirmedModalOpen, isModalOpen, amountOfProducts]);
 
@@ -63,14 +78,20 @@ const Product: React.FC = () => {
 
   return (
     <ProductContainer>
-      <a href="/">$</a>
+      <a href="/">
+        <Icon>
+          <HomeIcon />
+        </Icon>
+      </a>
       <div>
         <a
           href="
         /myrecipes
         "
         >
-          %
+          <Icon>
+            <ShoppingBagIcon />
+          </Icon>
           <div>
             <p>{amountOfProducts}</p>
           </div>
@@ -86,6 +107,13 @@ const Product: React.FC = () => {
           isSetToGroceryList={isSetToGroceryList}
           addToGroceryList={addToGroceryList}
           toggleConfirmedModal={toggleConfirmedModal}
+        />
+      </CompContainer>
+      <CompContainer>
+        <SimilarProducts
+          productId={id}
+          backendData={backendData}
+          category={product?.category}
         />
       </CompContainer>
       <CompContainer>

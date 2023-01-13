@@ -37,9 +37,9 @@ export const ProductContainer = styled.div`
         background-color: #ff9b85;
         height: 16px;
         width: 16px;
-        position: relative;
-        bottom: 14px;
-        left: 8px;
+        position: absolute;
+        bottom: 30px;
+        left: 30px;
         color: #ff9b85;
         border-radius: 50%;
 

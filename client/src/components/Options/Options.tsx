@@ -8,18 +8,21 @@ type OptionsProps = {
 const Options = ({ getGroceryList }: OptionsProps) => {
   return (
     <OptionsWrapper>
-      <button
-        onClick={() => {
-          localStorage.removeItem("groceryList");
-          getGroceryList();
-        }}
-      >
-        Delete all
-      </button>
+      <h1>Options</h1>
+      <div>
+        <button
+          onClick={() => {
+            localStorage.removeItem("groceryList");
+            getGroceryList();
+          }}
+        >
+          Delete all
+        </button>
 
-      <Link to="/">
-        <button>Back to home</button>
-      </Link>
+        <Link to="/">
+          <button>Back to home</button>
+        </Link>
+      </div>
     </OptionsWrapper>
   );
 };

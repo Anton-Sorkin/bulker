@@ -3,26 +3,47 @@ import { BackendDataContext } from "../../../App";
 import { IFood } from "../../../models/IFood";
 import Footer from "../../Footer/Footer";
 import SwiperInfo from "../../Info/SwiperInfo";
+import NextSwipe from "../../NextSwipe/NextSwipe";
 import SwiperModal from "../../ProductModal/SwiperModal";
+import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
 import { CompContainer, ProductContainer } from "../Product/Product.styles";
-import { NextSwipeWrapper } from "./Swiper.styles";
-
+import HomeIcon from "@mui/icons-material/Home";
+import { Icon } from "@mui/material";
 const Swiper = () => {
   const backendData = useContext(BackendDataContext) as IFood[];
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [amountOfProducts, setAmountOfProducts] = useState(0);
   const [productIndex, setProductIndex] = useState(0);
 
+  const fetchGroceryList = (): {
+    groceryList: IFood[];
+  } => {
+    const groceryList = JSON.parse(localStorage.getItem("groceryList") || "[]");
+
+    return { groceryList };
+  };
+
   const handleNextProduct = () => {
-    setProductIndex((productIndex + 1) % backendData.length);
+    const { groceryList } = fetchGroceryList();
+
+    if (groceryList.length >= backendData.length) {
+      setProductIndex(0);
+    } else {
+      setProductIndex((productIndex + 1) % backendData.length);
+    }
   };
 
   const handleAddAndNextProduct = () => {
-    const groceryList = JSON.parse(localStorage.getItem("groceryList") || "[]");
+    const { groceryList } = fetchGroceryList();
+
     groceryList.push(backendData[productIndex]);
     localStorage.setItem("groceryList", JSON.stringify(groceryList));
     console.log(groceryList);
-    setProductIndex((productIndex + 1) % backendData.length);
+    if (groceryList.length >= backendData.length) {
+      setProductIndex(0);
+    } else {
+      setProductIndex((productIndex + 1) % backendData.length);
+    }
   };
 
   const toggleModal = () => {
@@ -35,7 +56,11 @@ const Swiper = () => {
       (product: IFood) => product._id === backendData[productIndex]._id
     );
     if (foundProduct) {
-      setProductIndex((productIndex + 1) % backendData.length);
+      if (groceryList.length >= backendData.length) {
+        setProductIndex(0);
+      } else {
+        setProductIndex((productIndex + 1) % backendData.length);
+      }
     } else {
       return;
     }
@@ -48,10 +73,16 @@ const Swiper = () => {
 
   return (
     <ProductContainer>
-      <a href="/">$</a>
+      <a href="/">
+        <Icon>
+          <HomeIcon />
+        </Icon>
+      </a>
       <div>
         <a href="/myrecipes">
-          %
+          <Icon>
+            <ShoppingBagIcon />
+          </Icon>
           <div>
             <p>{amountOfProducts}</p>
           </div>
@@ -67,14 +98,10 @@ const Swiper = () => {
       </CompContainer>
 
       <CompContainer>
-        <NextSwipeWrapper>
-          <div>
-            <button onClick={handleNextProduct}>Next product</button>
-          </div>
-          <button onClick={handleAddAndNextProduct}>
-            Add it and next product
-          </button>
-        </NextSwipeWrapper>
+        <NextSwipe
+          handleNextProduct={handleNextProduct}
+          handleAddAndNextProduct={handleAddAndNextProduct}
+        />
       </CompContainer>
       <CompContainer>
         <Footer />

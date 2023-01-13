@@ -38,6 +38,45 @@ export const NabvarContainer = styled.div`
       text-decoration: none;
       color: #000000;
       cursor: pointer;
+      position: relative;
+      & > div {
+        display: flex;
+        background-color: #ff9b85;
+        height: 16px;
+        width: 16px;
+        position: absolute;
+        bottom: 22px;
+        left: 20px;
+        color: #ff9b85;
+        border-radius: 50%;
+
+        & > p {
+          font-size: 10px;
+          position: relative;
+          bottom: 8px;
+          left: 5px;
+          color: white;
+        }
+      }
     }
   }
 `;
+
+// & > div {
+//   display: flex;
+//   background-color: #ff9b85;
+//   height: 16px;
+//   width: 16px;
+//   position: absolute;
+//   bottom: 30px;
+//   left: 30px;
+//   color: #ff9b85;
+//   border-radius: 50%;
+
+//   & > p {
+//     font-size: 10px;
+//     position: relative;
+//     bottom: 8px;
+//     left: 5px;
+//     color: white;
+//   }
