@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { OptionsWrapper } from "./Options.styles";
 
-type OptionsProps = {
+export type OptionsProps = {
   getGroceryList: () => void;
 };
 

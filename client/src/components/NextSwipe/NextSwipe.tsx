@@ -1,6 +1,6 @@
 import { NextSwipeWrapper } from "./NextSwipe.styles";
 
-type NextSwipeProps = {
+export type NextSwipeProps = {
   handleNextProduct: () => void;
   handleAddAndNextProduct: () => void;
 };

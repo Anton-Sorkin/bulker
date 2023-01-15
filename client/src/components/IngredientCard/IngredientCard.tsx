@@ -1,7 +1,7 @@
 import { IFood } from "../../models/IFood";
 import { IngredientWrapper } from "./IngredientCard.styles";
 
-type IngredientCardProps = {
+export type IngredientCardProps = {
   product: IFood;
   getGroceryList: () => void;
   groceryList: IFood[];

@@ -11,7 +11,7 @@ export const ModalContainer = styled.div`
   align-items: center;
   position: absolute;
   & > div {
-    margin-top: -350px;
+    margin-top: -700px;
     display: flex;
     width: 80%;
     height: 30%;

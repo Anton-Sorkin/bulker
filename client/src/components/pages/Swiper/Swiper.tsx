@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { BackendDataContext } from "../../../App";
+import { BackendDataContext } from "../../../contexts/BackendDataContext";
 import { IFood } from "../../../models/IFood";
 import Footer from "../../Footer/Footer";
 import SwiperInfo from "../../Info/SwiperInfo";

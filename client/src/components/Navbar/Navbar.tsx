@@ -6,10 +6,16 @@ import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const [amountOfProducts, setAmountOfProducts] = useState(0);
+  const [amountOfHearted, setAmountOfHearted] = useState(0);
 
   useEffect(() => {
     const groceryList = JSON.parse(localStorage.getItem("groceryList") || "[]");
     setAmountOfProducts(groceryList.length);
+  }, []);
+
+  useEffect(() => {
+    const hearted = JSON.parse(localStorage.getItem("hearted") || "[]");
+    setAmountOfHearted(hearted.length);
   }, []);
 
   return (
@@ -18,10 +24,13 @@ const Navbar = () => {
         <h1>BULKER</h1>
       </a>
       <div>
-        <a href="/">
+        <a href="/hearted">
           <Icon>
             <FavoriteIcon />
           </Icon>
+          <div>
+            <p>{amountOfHearted}</p>
+          </div>
         </a>
         <a
           href="

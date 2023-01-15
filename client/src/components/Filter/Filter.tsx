@@ -1,9 +1,7 @@
 import { FilterContainer } from "./Filter.styles";
-
 import { FilterType } from "../pages/Home/Home";
-import React from "react";
 
-type FilterProps = {
+export type FilterProps = {
   currentFilter: FilterType;
   setCurrentFilter: (filter: FilterType) => void;
 };

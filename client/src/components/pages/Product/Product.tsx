@@ -1,6 +1,5 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { BackendDataContext } from "../../../App";
 import { IFood } from "../../../models/IFood";
 import AddToCart from "../../AddToCart/AddToCart";
 import ConfirmModal from "../../ConfirmModal/ConfirmModal";
@@ -12,6 +11,7 @@ import { Icon } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import { CompContainer, ProductContainer } from "./Product.styles";
 import SimilarProducts from "../../SimilarProducts/SimilarProducts";
+import { BackendDataContext } from "../../../contexts/BackendDataContext";
 
 const Product: React.FC = () => {
   const { id } = useParams<{ id: string }>();

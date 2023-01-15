@@ -1,6 +1,6 @@
 import { AddToCardWrapper } from "./AddToCart.styles";
 
-type AddToCartProps = {
+export type AddToCartProps = {
   isSetToGroceryList: boolean;
   addToGroceryList: () => void;
   toggleConfirmedModal: () => void;

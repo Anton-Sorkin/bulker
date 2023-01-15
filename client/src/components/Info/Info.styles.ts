@@ -8,6 +8,7 @@ export const InfoWrapper = styled.div`
   width: 95vw;
   background-color: white;
   border-radius: 8px 0px 0px 8px;
+  position: relative;
   @media (min-width: 768px) {
     height: 260px;
   }
@@ -53,8 +54,27 @@ export const InfoWrapper = styled.div`
     color: #ff9b85;
     cursor: pointer;
     @media (min-width: 768px) {
+      padding-top: 36px;
       font-size: 16px;
       width: 150px;
     }
+  }
+`;
+
+export const FavoriteButton = styled.button`
+  position: absolute;
+  bottom: 40px;
+  right: 10px;
+  background-color: white;
+  border: none;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  @media (min-width: 768px) {
+    bottom: 50px;
+    right: 20px;
   }
 `;

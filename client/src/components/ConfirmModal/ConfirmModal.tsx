@@ -1,7 +1,7 @@
 import { IFood } from "../../models/IFood";
 import { ModalContainer } from "../ProductModal/ProductModal.styles";
 
-type ConfirmModalProps = {
+export type ConfirmModalProps = {
   product?: IFood;
   addToGroceryList: () => void;
   toggleConfirmedModal: () => void;

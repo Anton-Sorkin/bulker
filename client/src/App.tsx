@@ -9,6 +9,8 @@ import Home from "./components/pages/Home/Home";
 import Product from "./components/pages/Product/Product";
 import Swiper from "./components/pages/Swiper/Swiper";
 import GroceryList from "./components/pages/GroceryList/GroceryList";
+import Heart from "./components/pages/Heart/Heart";
+import { BackendDataContext } from "./contexts/BackendDataContext";
 
 function App() {
   const [backendData, setBackendData] = useState<IFood[]>([]);
@@ -73,12 +75,18 @@ function App() {
               </BackendDataContext.Provider>
             }
           ></Route>
+          <Route
+            path="/hearted"
+            element={
+              <BackendDataContext.Provider value={backendData}>
+                <Heart />
+              </BackendDataContext.Provider>
+            }
+          ></Route>
         </Routes>
       </BrowserRouter>
     </>
   );
 }
-
-export const BackendDataContext = createContext<IFood[] | undefined>(undefined);
 
 export default App;

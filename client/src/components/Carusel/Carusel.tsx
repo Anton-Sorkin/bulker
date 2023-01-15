@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import { Link, useParams } from "react-router-dom";
-import { BackendDataContext } from "../../App";
+import { Link } from "react-router-dom";
+import { BackendDataContext } from "../../contexts/BackendDataContext";
 import Card from "../Card/Card";
 import { FilterType } from "../pages/Home/Home";
 import { CaruselContainer } from "./Carusel.styles";
 
-type CaruselProps = {
+export type CaruselProps = {
   currentFilter: FilterType;
   category?: string;
 };
@@ -56,7 +56,7 @@ const Carusel = ({ currentFilter, category }: CaruselProps) => {
         <div>
           {itemsToDisplay!.map((item) => (
             <Link to={`/product/${item._id}`}>
-              <Card key={item.id} img={item.img} title={item.title} />
+              <Card key={item._id} img={item.img} title={item.title} />
             </Link>
           ))}
         </div>

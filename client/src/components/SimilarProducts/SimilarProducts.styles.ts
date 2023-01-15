@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-export const CaruselContainer = styled.div`
+export const SimilarProductsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   height: 325px;
