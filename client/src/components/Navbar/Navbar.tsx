@@ -11,12 +11,12 @@ const Navbar = () => {
   useEffect(() => {
     const groceryList = JSON.parse(localStorage.getItem("groceryList") || "[]");
     setAmountOfProducts(groceryList.length);
-  }, []);
+  }, [localStorage.getItem("groceryList")]);
 
   useEffect(() => {
     const hearted = JSON.parse(localStorage.getItem("hearted") || "[]");
     setAmountOfHearted(hearted.length);
-  }, []);
+  }, [localStorage.getItem("hearted")]);
 
   return (
     <NabvarContainer>
