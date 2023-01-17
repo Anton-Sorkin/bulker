@@ -17,12 +17,14 @@ export const HeartHeader = styled.div`
   & > h1 {
     font-size: 24px;
     margin: 10px 0px 0px 25px;
+    font-weight: 700;
   }
 
   & > p {
     padding-top: 20px;
     font-size: 16px;
     margin: 0px 0px 10px 25px;
+    font-weight: 400;
   }
 `;
 
@@ -44,12 +46,14 @@ export const HeartCard = styled.div`
     font-size: 24px;
     margin: 10px 0px;
     padding: 0px 25px;
+    font-weight: 700;
   }
 
   & > p {
-    font-size: 16px;
+    font-size: 13px;
     margin: 0px 0px 10px 0px;
     padding: 0px 25px;
+    font-weight: 400;
   }
 
   & > button {
@@ -66,4 +70,14 @@ export const HeartCard = styled.div`
     top: 340px;
     right: 0px;
   }
+`;
+
+export const HeartEmpty = styled.div`
+  display: flex;
+  height: 300px;
+  width: 95%;
+  background-color: #fff;
+  border-radius: 8px 0px 0px 8px;
+  justify-content: center;
+  align-items: center;
 `;

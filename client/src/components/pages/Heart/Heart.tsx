@@ -3,7 +3,12 @@ import { IFood } from "../../../models/IFood";
 import Footer from "../../Footer/Footer";
 import Navbar from "../../Navbar/Navbar";
 import { CompContainer } from "../Home/Home.styles";
-import { HeartCard, HeartContainer, HeartHeader } from "./Heart.styles";
+import {
+  HeartCard,
+  HeartContainer,
+  HeartEmpty,
+  HeartHeader,
+} from "./Heart.styles";
 
 const Heart = () => {
   const [hearted, setHearted] = useState<IFood[]>([]);
@@ -21,8 +26,6 @@ const Heart = () => {
     const filtered = hearted.filter((item) => item._id !== id);
     setHearted(filtered);
     localStorage.setItem("hearted", JSON.stringify(filtered));
-    //bugg i found last second, this is only a workaround for presentation, not a fix.
-    window.location.reload();
   };
 
   return (
@@ -58,6 +61,12 @@ const Heart = () => {
             </HeartCard>
           </CompContainer>
         )
+      )}
+
+      {hearted.length === 0 && (
+        <CompContainer>
+          <HeartEmpty>There are no saved meals</HeartEmpty>
+        </CompContainer>
       )}
       <CompContainer>
         <Footer />

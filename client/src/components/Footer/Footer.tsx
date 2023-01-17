@@ -9,11 +9,11 @@ const Footer = () => {
   return (
     <FooterContainer>
       <TopFooterDiv>
-        <h2>need Help?</h2>
-        <h1>Follow US</h1>
+        <h2>Need help?</h2>
+        <h1>Follow us</h1>
       </TopFooterDiv>
       <MidFooterDiv>
-        <h2>contact us</h2>
+        <h2>Contact us</h2>
         <div>
           <h2>Instagram</h2>
           <h2>Facebook</h2>
@@ -22,7 +22,7 @@ const Footer = () => {
       </MidFooterDiv>
       <LowFooterDiv>
         <h2>
-          <a href="/">Go Back to start</a>
+          <a href="/">Go back to start</a>
         </h2>
       </LowFooterDiv>
     </FooterContainer>

@@ -12,7 +12,6 @@ import HomeIcon from "@mui/icons-material/Home";
 import { CompContainer, ProductContainer } from "./Product.styles";
 import SimilarProducts from "../../SimilarProducts/SimilarProducts";
 import { BackendDataContext } from "../../../contexts/BackendDataContext";
-import Navbar from "../../Navbar/Navbar";
 
 const Product: React.FC = () => {
   const { id } = useParams<{ id: string }>();

@@ -12,6 +12,17 @@ const IngredientCard = ({
   getGroceryList,
   groceryList,
 }: IngredientCardProps) => {
+  const handleDelete = () => {
+    const index = groceryList.findIndex(
+      (groceryProduct) => groceryProduct._id === product._id
+    );
+    if (index !== -1) {
+      groceryList.splice(index, 1);
+      localStorage.setItem("groceryList", JSON.stringify(groceryList));
+      getGroceryList();
+    }
+  };
+
   return (
     <IngredientWrapper>
       <div>
@@ -23,20 +34,8 @@ const IngredientCard = ({
           ))}
         </ul>
       </div>
-      <button
-        onClick={() => {
-          const filteredGroceryList = groceryList.filter(
-            (groceryProduct) => groceryProduct._id !== product._id
-          );
-          localStorage.setItem(
-            "groceryList",
-            JSON.stringify(filteredGroceryList)
-          );
-          getGroceryList();
-        }}
-      >
-        Delete
-      </button>
+
+      <button onClick={handleDelete}>Delete</button>
     </IngredientWrapper>
   );
 };

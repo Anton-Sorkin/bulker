@@ -46,7 +46,7 @@ const Home = () => {
       <CompContainer>
         <SwiperLinkContainer>
           <h1>Find Your Favorites</h1>
-          <p>A new take on finding new Food. Swipe it!</p>
+          <p>A new take on finding new food. Swipe it!</p>
           <Link to={`/swiper`}>
             <button>Swipe them now!</button>
           </Link>
