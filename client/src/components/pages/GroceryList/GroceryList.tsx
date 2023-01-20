@@ -21,10 +21,10 @@ const GroceryList = () => {
   );
 
   const ingredientCounts = ingredients.reduce((acc, ingredient) => {
-    if (acc[ingredient]) {
-      acc[ingredient] += 1;
+    if (acc[ingredient.toLowerCase()]) {
+      acc[ingredient.toLowerCase()] += 1;
     } else {
-      acc[ingredient] = 1;
+      acc[ingredient.toLowerCase()] = 1;
     }
     return acc;
   }, {} as { [key: string]: number });
